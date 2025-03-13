@@ -26,12 +26,9 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: hammadzarar/my-webite
+          images: hammadzarar/my-website
           tags: |
             type=raw,value=latest
-            type=sha
-            type=ref,event=branch
-            type=ref,event=tag
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
