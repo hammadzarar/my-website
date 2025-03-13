@@ -38,11 +38,9 @@ jobs:
         with:
           context: .
           push: true
-          tags: |
-            hammadzarar/my-webite:latest
-            hammadzarar/my-webite:${{ github.sha }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=registry,ref=your-dockerhub-username/your-image-name:latest
+          cache-from: type=registry,ref=hammadzarar/my-webite:latest
           cache-to: type=inline
           
           
