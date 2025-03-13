@@ -46,9 +46,4 @@ jobs:
           cache-to: type=inline
           
           
-      - name: Delete old images
-        uses: actions/delete-package-versions@v5
-        with:
-          package-name: hammadzarar/my-webite
-          package-type: container
-          min-versions-to-keep: 10
+    
