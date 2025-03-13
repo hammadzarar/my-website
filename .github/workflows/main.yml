@@ -27,6 +27,11 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: hammadzarar/my-webite
+          tags: |
+            type=raw,value=latest
+            type=sha
+            type=ref,event=branch
+            type=ref,event=tag
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
@@ -37,10 +42,13 @@ jobs:
             hammadzarar/my-webite:latest
             hammadzarar/my-webite:${{ github.sha }}
           labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=registry,ref=your-dockerhub-username/your-image-name:latest
+          cache-to: type=inline
+          
           
       - name: Delete old images
         uses: actions/delete-package-versions@v5
         with:
-          package-name: your-image-name
+          package-name: hammadzarar/my-webite
           package-type: container
           min-versions-to-keep: 10
